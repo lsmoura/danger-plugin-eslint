@@ -1,0 +1,23 @@
+parser: babel-eslint
+rules:
+  semi: error
+  no-extra-semi: warn
+  quotes:
+    - warn
+    - single
+    - avoidEscape: false
+
+overrides:
+  - files:
+      - "__tests__/**/*.{js,ts}x?"
+      - "src/**/*.{test,spec}.{js,ts}x?"
+    env:
+      jest: true
+    plugins:
+      - jest
+    rules:
+      "jest/no-disabled-tests": "warn"
+      "jest/no-focused-tests": "error"
+      "jest/no-identical-title": "error"
+      "jest/prefer-to-have-length": "warn"
+      "jest/valid-expect": "error"
