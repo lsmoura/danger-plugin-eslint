@@ -1,0 +1,24 @@
+name: Node CI
+on:
+  - pull_request
+
+jobs:
+  danger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: install yarn
+        run: npm install -g yarn
+      - name: yarn install
+        run: yarn install --frozen-lockfile
+      - name: linting
+        continue-on-error: true
+        run: yarn lint --output-file eslint-result.json --format json --no-color
+      - name: Danger
+        run: yarn danger ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
