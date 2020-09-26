@@ -20,9 +20,11 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "lint": "eslint --ext js,jsx,ts,tsx src/",
-    "ci:lint": "eslint --ext js,jsx,ts,tsx src/ --output-file eslint-result.json --format json --no-color"
+    "ci:lint": "eslint --ext js,jsx,ts,tsx src/ --output-file eslint-result.json --format json --no-color",
+    "ci:typecheck": "tsc --noEmit --pretty false | tee tsc_raw.log"
   },
   "devDependencies": {
+    "@lsmoura/danger-plugin-typecheck": "^0.0.1",
     "@types/node": "^14.6.0",
     "babel-eslint": "^10.1.0",
     "danger": "^10.4.0",

@@ -18,6 +18,9 @@ jobs:
       - name: linting
         continue-on-error: true
         run: pnpm ci:lint
+      - name: typechecking
+        continue-on-error: true
+        run: pnpm ci:typecheck
       - name: Danger
         run: pnpx danger ci
         env:
