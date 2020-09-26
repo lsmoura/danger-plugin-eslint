@@ -12,15 +12,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: install yarn
-        run: npm install -g yarn
+      - name: install pnpm
+        run: npm install -g pnpm
       - name: install modules
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: build
-        run: yarn build
-      - name: npm login
-        run: npm set //registry.npmjs.org/:_authToken ${NPM_AUTH_TOKEN}
+        run: pnpm build
+      - name: pnpm login
+        run: pnpm set //registry.npmjs.org/:_authToken ${NPM_AUTH_TOKEN}
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       - name: Publish
-        run: npm publish --no-git-checks --access public
+        run: pnpm publish --no-git-checks --access public
