@@ -19,7 +19,8 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "lint": "eslint --ext js,jsx,ts,tsx src/"
+    "lint": "eslint --ext js,jsx,ts,tsx src/",
+    "ci:lint": "eslint --ext js,jsx,ts,tsx src/ --output-file eslint-result.json --format json --no-color"
   },
   "devDependencies": {
     "@types/node": "^14.6.0",
