@@ -11,14 +11,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: install yarn
-        run: npm install -g yarn
-      - name: yarn install
-        run: yarn install --frozen-lockfile
+      - name: install pnpm
+        run: npm install -g pnpm
+      - name: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: linting
         continue-on-error: true
-        run: yarn lint --output-file eslint-result.json --format json --no-color
+        run: pnpm ci:lint
+      - name: typechecking
+        continue-on-error: true
+        run: pnpm ci:typecheck
       - name: Danger
-        run: yarn danger ci
+        run: pnpx danger ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

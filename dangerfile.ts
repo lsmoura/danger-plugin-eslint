@@ -1,4 +1,5 @@
 import { danger, warn } from 'danger';
+import typecheck from '@lsmoura/danger-plugin-typecheck';
 import eslint from './src';
 
 function includes(whole: string, piece: string) {
@@ -30,3 +31,4 @@ if (hasAppChanges && !hasTestChanges) {
 }
 
 eslint();
+typecheck();
